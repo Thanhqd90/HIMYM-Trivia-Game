@@ -1,0 +1,86 @@
+body {
+    color: white;
+    background-color: black;
+}
+
+.banner {
+    background: url('http://seireshd.com/gd/wp-content/uploads/2017/09/himym-banner.png') center;
+    background-size: cover;
+    padding: 25px 0px 45px 0px;
+}
+
+div {
+    border: red 1px solid;
+}
+
+p {
+    font-size: 24px;
+    color: white;
+    margin-left: 5px;
+}
+  
+h1 {
+    color: white;
+    font-size: 72px;
+}
+
+h3 {
+    margin-top:5px;
+    color:White;
+    font-size: 50px;
+}
+  
+  
+.outerStartContainer, .triviaStart {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+  
+input {
+    visibility:hidden;
+}
+
+label {
+    padding:5px;
+    display: block;
+    background-color: gray;
+    margin: 3px 0px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+input[type=radio]:checked + label {
+    background: red;
+}
+  
+label:hover {
+    background-color: #882000;
+    transition: 500ms;
+}
+
+#quizGameArea {
+    background-color: rgba(0,0,0, 0.6);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.nextButton, #submitButton {
+    border: 3px solid #ff0303;
+	color: #ff0303;
+	background-color: white;
+	padding: 15px 35px;
+	margin: 5px 0px 10px 0px;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+}
+.nextButton:hover, #submitButton:hover {
+   background-color: #ff0303;
+   color:white;
+    transition: 500ms;
+}
