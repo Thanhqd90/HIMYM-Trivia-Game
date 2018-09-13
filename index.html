@@ -9,6 +9,7 @@
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
 
     <!-- css -->
     <link rel="stylesheet" href="assets/css/reset.css" />
@@ -17,7 +18,9 @@
 
     <!-- jQuery and javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/js/questions.js" type="text/javascript"></script>
     <script src="assets/js/js.js" type="text/javascript"></script>
+    <script src="assets/js/random.js" type="text/javascript"></script>
 
     <!-- Browser title -->
     <title>HIMYM Trivia Game</title>
@@ -26,39 +29,39 @@
 <body>
 <!-- Navigation bar (3 parts)-->
 
-<nav class="banner navbar navbar-dark bg-dark"> <!-- Nav bar start-->
+<nav class="banner navbar navbar-dark bg-dark sticky-top"> <!-- Nav bar start-->
    <div class="btn-group" role="group" aria-label="First group">
-        <img height="120px" width="120px" src="http://images.clipartpanda.com/yellow-umbrella-clipart-yellow-umbrella-black-handle.svg">
+
     </div>
    
 <!-- Music control -->
     <div class="btn-group musicButtons" role="group" aria-label="Third group">
-        <button type="button" id="song1" class="fa fa-play-circle btn btn-dark" aria-hidden="true"> Play Theme Song</button>
-        <button type="button" id="pause" class="fa fa-pause-circle btn btn-dark" aria-hidden="true"> Pause Music</button>
+        <button type="button" id="song1" class="fa fa-play-circle btn btn-dark" aria-hidden="true"> Let's Go to the Mall</button>
+        <button type="button" id="pause" class="fa fa-pause-circle btn btn-dark" aria-hidden="true"> Pause</button>
     </div>
 </nav> <!-- End nav bar-->
 
 <!-- Player statistics -->
-<div class="container">
+<div class="container-fluid playerStats">
     <div class="row">
         <div class="col-md-4">
-            <p class="text-center roundCounter">Round: <span>0</span></p>
+            <p class="stats text-center mt-3 roundCounter">Round: <span>0</span></p>
         </div>
         <div class="col-md-4">
-            <p class ="text-center">Timer: <span class="timer" id="2"></p>
+            <p class="stats text-center mt-3 scoreCounter">Score: <span>0</span> </p>
         </div>
         <div class="col-md-4">
-            <p class="text-center scoreCounter">Score: <span>0</span> </p>
+            <p class ="stats text-center mt-3">Time remaining: <span class="timer"></span> seconds</p>
         </div>
     </div>
 </div>
-    
+<br>
 <!-- Default page with start buttons -->
 <div class="outerStartContainer">
     <div class="row">
         <div class="triviaStart">
-            <button type="button" class="start timerStart btn btn-dark">Play 10 Questions<br><img height="200px" width="200px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpCuAjH3HPRVs_EnyfaqXyZf4pH8hMMHMRljBMAZ85_Qp2YHJ9"></button>
-            <!-- <button type="button" class="start20 btn btn-secondary">Play 20 Questions (all)<br><img height="200px" width="200px"  src="https://i.pinimg.com/originals/23/48/87/234887e62db643cc79c3b520e855d9f0.jpg"></button> -->
+            <button type="button" class="start10 timerStart btn btn-info">Play 10 Questions<br><img height="200px" width="200px" src="./assets/images/suitup.png"></button>
+            <button type="button" class="start20 timerStart btn btn-danger">Play 20 Questions (all)<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>
         </div>
     </div>
 </div>
@@ -69,6 +72,25 @@
     </div>
 </div>
 
+<!-- modal -->
+
+<div class="modal fade bd-example-modal-lg" id="answers" tabindex="-1" role="dialog" aria-labelledby="answersModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h class="modal-title text-center" id="answersModalLabel">Results</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+                <div class="modal-body showAnswers">
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close Window</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Bootstrap Javascript -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

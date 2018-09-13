@@ -1,0 +1,69 @@
+  // Global variables
+  var roundNumber = 0;
+  // var randomQuestions = [];
+  // var randomChoices = [];
+  // var randomAnswer =[];
+  var playerGuess = [];
+  var scoreCount = 0;
+  
+  // Sounds
+  
+  var suitup = new Audio('./assets/sounds/suitup.mp3');
+  // var challenge = new Audio('./assets/sounds/challenge.mp3');
+  var diamondsuit = new Audio('./assets/sounds/diamondsuit.mp3');
+  var awwman = new Audio('./assets/sounds/awwman.mp3');
+  var legendary = new Audio('./assets/sounds/legendary.mp3');
+  var forfeit = new Audio('./assets/sounds/forfeit.mp3');
+  var awesome = new Audio('./assets/sounds/awesome.mp3');
+  var highsix = new Audio('./assets/sounds/highsix.mp3');
+  
+    
+  // Update question counter 
+  
+    function roundCounter(){
+      $('.roundCounter span').html(roundNumber + 1);
+    }
+    
+  // Questions array
+  
+    var questions = [
+      'What is the name of the bar the main characters hang out at?',
+      'What was Robin\'s stage name in Canada?',
+      'What are Marshall and Lily\s nicknames for each other?',
+      'What was Victora\'s fake name used at Claudia and Stuart\'s wedding?',
+      'What is the name of the musical Marshall and Brad go see?',
+      'What is the name of the company Barney works for?',
+      'What college did Ted, Marshall and Lily attend?',
+      'What is the name of the movie directed by Tony Grafanello that portrayed Ted and Stella\'s relationship?',
+      'What item did Ted take that belonged to the mother on St. Patrick\'s Day?',
+      'What question do I put here?'
+    ];
+    
+  // Possible answers array
+    var possibleAnswers = [
+      ['The Hoser Hut','MacLaren\'s Pub', 'Puzzles','Central Perk'],
+      ['Robin Rainbow', 'Batman and Robin', 'Robin Sparkles', 'Red Robin'],
+      ['Salt and Sugar', 'Luke and Lea', 'Big Fudge and Little Vanilla', 'Marshmellow and Lilypad'],
+      ['Buttercup', 'Cupcake', 'Vanilla', 'Canolli'],
+      ['Wicked', 'Mamma Mia', 'West Side Story', 'The Sound of Music'],
+      ['Goliath National Bank', 'Shinjitsu', 'Nicholson and Hewitt', 'Total Rip Fitness'],
+      ['Columbia', 'New York University', 'Syracuse', 'Wesleyan'],
+      ['Forgtting Sarah Marshall', 'The Wedding Bride', 'I Love you Man', 'American Pie'],
+      ['Yellow Umbrella', 'Blue French Horn', 'Pink Saxophone', 'Red Cowboy Boots'],
+      ['1', '2', '3', '4']
+    ];
+    
+    // Correct answers array
+    
+    var correctAnswers = [
+            'MacLaren\'s Pub',
+            'Robin Sparkles',
+            'Marshmellow and Lilypad',
+            'Buttercup',
+            'Mamma Mia',
+            'Goliath National Bank',
+            'Wesleyan',
+            'The Wedding Bride',
+            'Yellow Umbrella',
+            '1'
+            ];

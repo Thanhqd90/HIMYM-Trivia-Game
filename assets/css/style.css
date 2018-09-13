@@ -1,17 +1,40 @@
 body {
     color: white;
     background-color: black;
+    font-family: 'Quattrocento', serif;
+    background: url('https://www.desktopbackground.org/p/2013/06/05/587418_how-i-met-your-mother-wallpaper-1_2560x1440_h.jpg')  no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: auto;
+    display: block;
+    position: relative;
+    background-position: 0 200px;
 }
 
 .banner {
-    background: url('http://seireshd.com/gd/wp-content/uploads/2017/09/himym-banner.png') center;
+    background: url('../images/himym-banner.png') center;
     background-size: cover;
-    padding: 25px 0px 45px 0px;
+    padding: 85px;
+    overflow: auto;
 }
 
-div {
-    border: red 1px solid;
+.results {
+    color: black;
 }
+.stats {
+    background: rgb(41, 0, 0);
+    border: red 1px dashed;
+    padding: 3px;
+}
+
+.playerStats {
+    background: url('../images/office.png') repeat;
+    border: black 2px solid;
+    
+}
+/* div {
+    border: red 1px solid;
+} */
 
 p {
     font-size: 24px;
@@ -24,12 +47,23 @@ h1 {
     font-size: 72px;
 }
 
+h2{
+    color:black;
+    text-align: center;
+}
+
 h3 {
-    margin-top:5px;
+    background: black;
+    border: black 2px solid;
     color:White;
+    padding: 5px;
     font-size: 50px;
 }
   
+
+h4 {
+    font-weight: bolder;
+}
   
 .outerStartContainer, .triviaStart {
     margin-left: auto;
@@ -44,29 +78,29 @@ input {
 label {
     padding:5px;
     display: block;
-    background-color: gray;
+    background-color: black;
     margin: 3px 0px;
-    cursor: pointer;
+    cursor: url('../images/cursor.jpg'), auto;
     font-size: 24px;
-}
-
-input[type=radio]:checked + label {
-    background: red;
 }
   
 label:hover {
-    background-color: #882000;
+    background-color: #990808;
     transition: 500ms;
+    cursor: url('../images/cursor.jpg'), auto;
 }
 
+
 #quizGameArea {
-    background-color: rgba(0,0,0, 0.6);
+    background: url('../images/office.png') repeat;
+    padding: 50px;
+    background-color: rgb(0, 0, 0);
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
-.nextButton, #submitButton {
+.nextButton {
     border: 3px solid #ff0303;
 	color: #ff0303;
 	background-color: white;
@@ -79,7 +113,7 @@ label:hover {
 	font-size: 16px;
 	cursor: pointer;
 }
-.nextButton:hover, #submitButton:hover {
+.nextButton:hover {
    background-color: #ff0303;
    color:white;
     transition: 500ms;
