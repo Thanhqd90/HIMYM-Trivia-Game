@@ -1,133 +1,44 @@
 $(document).ready(function () { // document.ready start
 
-  // var timer;
-  
-  
-  // function myTimer(sec) {
-  //     if (timer) clearInterval(timer);
-  //     timer = setInterval(function() { 
-  //         $('.timer').text(sec--);
-  //         if (sec == -1) {
-  //             clearInterval(timer);
-  //             feedback();
-  //             nextQuestion();
-  //             alert('done');
-  //         } 
-  //     }, 1000);
-  // }
-  
-  // $(".timerStart").on("click", function() {
-  //     myTimer(3);
-  // });
-  
-  // // Global variables
-  // var roundNumber = 0;
-  // // var randomQuestions = [];
-  // // var randomChoices = [];
-  // // var randomAnswer =[];
-  // var playerGuess = [];
-  // var scoreCount = 0;
-  
-  // // Sounds
-  
-  // var suitup = new Audio('./assets/sounds/suitup.mp3');
-  // // var challenge = new Audio('./assets/sounds/challenge.mp3');
-  // var awwman = new Audio('./assets/sounds/awwman.mp3');
-  // var legendary = new Audio('./assets/sounds/legendary.mp3');
-  // var forfeit = new Audio('./assets/sounds/forfeit.mp3');
-  // var awesome = new Audio('./assets/sounds/awesome.mp3');
-  // var highsix = new Audio('./assets/sounds/highsix.mp3');
-  
-    
-  // // Update question counter 
-  
-  //   function roundCounter(){
-  //     $('.roundCounter span').html(roundNumber + 1);
-  //   }
-    
-  // // Questions array
-  
-  //   var questions = [
-  //     'What is the name of the bar the main characters hang out at?',
-  //     'What was Robin\'s stage name in Canada?',
-  //     'What are Marshall and Lily\s nicknames for each other?',
-  //     'What was Victora\'s fake name used at Claudia and Stuart\'s wedding?',
-  //     'What is the name of the musical Marshall and Brad go see?',
-  //     'What is the name of the company Barney works for?',
-  //     'What college did Ted, Marshall and Lily attend?',
-  //     'What is the name of the movie directed by Tony Grafanello that portrayed Ted and Stella\'s relationship?',
-  //     'What item did Ted take that belonged to the mother on St. Patrick\'s Day?',
-  //     'What question do I put here?'
-  //   ];
-    
-  // // Possible answers array
-  //   var possibleAnswers = [
-  //     ['The Hoser Hut','MacLaren\'s Pub', 'Puzzles','Central Perk'],
-  //     ['Robin Rainbow', 'Batman and Robin', 'Robin Sparkles', 'Red Robin'],
-  //     ['Salt and Sugar', 'Luke and Lea', 'Big Fudge and Little Vanilla', 'Marshmellow and Lilypad'],
-  //     ['Buttercup', 'Cupcake', 'Vanilla', 'Canolli'],
-  //     ['Wicked', 'Mamma Mia', 'West Side Story', 'The Sound of Music'],
-  //     ['Goliath National Bank', 'Shinjitsu', 'Nicholson and Hewitt', 'Total Rip Fitness'],
-  //     ['Columbia', 'New York University', 'Syracuse', 'Wesleyan'],
-  //     ['Forgtting Sarah Marshall', 'The Wedding Bride', 'I Love you Man', 'American Pie'],
-  //     ['Yellow Umbrella', 'Blue French Horn', 'Pink Saxophone', 'Red Cowboy Boots'],
-  //     ['1', '2', '3', '4']
-  //   ];
-    
-  //   // Correct answers array
-    
-  //   var correctAnswers = [
-  //           'MacLaren\'s Pub',
-  //           'Robin Sparkles',
-  //           'Marshmellow and Lilypad',
-  //           'Buttercup',
-  //           'Mamma Mia',
-  //           'Goliath National Bank',
-  //           'Wesleyan',
-  //           'The Wedding Bride',
-  //           'Yellow Umbrella',
-  //           '1'
-  //           ];
- 
     var len = questions.length;
-    var chosen = [];
-    var chosen2 = [];
-    var chosen3 = [];
-    
-    for (var i = 0; i<=10; i++) {
-    var number = Math.floor(Math.random() * len);  
-    chosen[i] = questions[number];
-    chosen2[i] = possibleAnswers[number];
-    chosen3[i] = correctAnswers[number];
-    
-    for (k=0; k<=i-1; k++) {
-    if (chosen[k] == chosen[i]) {
-    i--;  // duplicate found so decrement i
-    }
-    }
-    }
-    
-    console.log(chosen);
-    console.log(chosen[0]);
-    console.log(chosen[1]);
-    console.log(chosen[2]);
-    console.log(chosen[3]);
-    console.log(chosen[4]);
-
-    console.log(chosen2);
-    console.log(chosen2[0]);
-    console.log(chosen2[1]);
-    console.log(chosen2[2]);
-    console.log(chosen2[3]);
-    console.log(chosen2[4]);
-
-    console.log(chosen3);
-    console.log(chosen3[0]);
-    console.log(chosen3[1]);
-    console.log(chosen3[2]);
-    console.log(chosen3[3]);
-    console.log(chosen3[4]);
-
+      var chosen = [];
+      var chosen2 = [];
+      var chosen3 = [];
+      
+      for (var i = 0; i<=4; i++) {
+      var number = Math.floor(Math.random() * len);  
+      chosen[i] = questions[number];
+      chosen2[i] = possibleAnswers[number];
+      chosen3[i] = correctAnswers[number];
+      
+      for (k=0; k<=i-1; k++) {
+      if (chosen[k] == chosen[i]) {
+      i--;  // duplicate found so decrement i
+      }
+      }
+      }
+      
+      console.log(chosen);
+      console.log(chosen[0]);
+      console.log(chosen[1]);
+      console.log(chosen[2]);
+      console.log(chosen[3]);
+      console.log(chosen[4]);
+  
+      console.log(chosen2);
+      console.log(chosen2[0]);
+      console.log(chosen2[1]);
+      console.log(chosen2[2]);
+      console.log(chosen2[3]);
+      console.log(chosen2[4]);
+  
+      console.log(chosen3);
+      console.log(chosen3[0]);
+      console.log(chosen3[1]);
+      console.log(chosen3[2]);
+      console.log(chosen3[3]);
+      console.log(chosen3[4]);
+  
   
     function hideStartScreen(){
       $('.outerStartContainer').hide();
@@ -144,10 +55,11 @@ $(document).ready(function () { // document.ready start
       $('.start10').on('click', function(){
       startQuiz();
       suitup.play();
+      
       });
   
   
-  // Generate random questions and answers after user clicks start
+    // Generate random questions and answers after user clicks start
     function generateQuestions (){
       if(roundNumber < chosen.length){
          $('.quizGameplay').html(`<form id="quizGameArea">
@@ -254,7 +166,7 @@ $(document).ready(function () { // document.ready start
     function results(){
       
       if (scoreCount < 6){
-        const restartURL = '<a href="#" class="restart"><p>Play Again</p></a>';
+        const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
         forfeit.play();
         $('#quizGameArea').html('<p class="resultsFeedback">I\'m not mad, just disappointed</p>');
         $('#quizGameArea').append('<br><img src="https://78.media.tumblr.com/f59a31fbe5137bc1372240186c76d846/tumblr_nr2vni88ue1u55i54o1_400.gif">');
@@ -272,12 +184,12 @@ $(document).ready(function () { // document.ready start
         restartQuiz();
       } else if (scoreCount >= 6 && scoreCount < 9) {
         legendary.play();
-        const restartURL = '<a href="#" class="restart"><p>Play Again</p></a>';
+        const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
         $('#quizGameArea').html(`<p class="resultsFeedback">It\'s going to be -waitforit- Legendary</p>`);
         $('#quizGameArea').append('<br><img src="http://78.media.tumblr.com/tumblr_lxxfexRoNp1qageydo1_500.gif">');
         $('#quizGameArea').append(restartURL);
         $('#quizGameArea').append('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
-
+  
         for(var i = 0; i < chosen.length; i++){
           $('.showAnswers').append(`
           <div class="quizSummary"><h4 class="results">${i + 1}. ${chosen[i]}</h4> 
@@ -288,32 +200,35 @@ $(document).ready(function () { // document.ready start
   
         restartQuiz();
       } else {
-        const restartURL = '<a href="#" class="restart"><p>Play again</p></a>';
+        const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
         highsix.play();
         $('#quizGameArea').html('<p class="resultsFeedback">The highest of 5\'s!</p>');
         $('#quizGameArea').append('<br><img src="https://media1.tenor.com/images/33ec8a1a310411d87c49c8cf7a8b16eb/tenor.gif"><br>');
         $('#quizGameArea').append(restartURL);
         $('#quizGameArea').append('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
-
+  
         for(var i = 0; i < chosen.length; i++){
           $('.showAnswers').append(`
           <div class="quizSummary"><h4 class="results">${i + 1}. ${chosen[i]}</h4> 
           <p class="results">You selected <strong>${playerGuess[i]}</p></strong>
           <p class="results">The correct answer was <strong>${chosen3[i]}</strong></p></div>`);
       }
-
-
+  
+  
         restartQuiz();
       }
     }
     
     function restartQuiz(){
-      $('.restart').on('click', function(){
-        window.location.reload(true);
-        });
+        $('.restart').on('click', function(){
+            scoreCount = 0;
+            $('.scoreCounter span').html(`${scoreCount}`);
+            $('.roundCounter span').html(`${roundNumber + 1}`);
+            $('.outerStartContainer').show();
+            $('#quizGameArea').hide();
+            roundNumber = 0;
+            playerGuess.length = 0;
+            challenge.play();
+            });
       }
     });
-  
-      
-  
-    // document.Ready end

@@ -9,7 +9,7 @@
   // Sounds
   
   var suitup = new Audio('./assets/sounds/suitup.mp3');
-  // var challenge = new Audio('./assets/sounds/challenge.mp3');
+  var challenge = new Audio('./assets/sounds/challenge.mp3');
   var diamondsuit = new Audio('./assets/sounds/diamondsuit.mp3');
   var awwman = new Audio('./assets/sounds/awwman.mp3');
   var legendary = new Audio('./assets/sounds/legendary.mp3');
