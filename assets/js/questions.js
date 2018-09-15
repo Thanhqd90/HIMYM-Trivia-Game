@@ -8,7 +8,9 @@
   
   // Sounds
   
+  var mall = new Audio('./assets/sounds/mall.mp3');
   var suitup = new Audio('./assets/sounds/suitup.mp3');
+  var timesup = new Audio('./assets/sounds/timeup.mp3');
   var challenge = new Audio('./assets/sounds/challenge.mp3');
   var diamondsuit = new Audio('./assets/sounds/diamondsuit.mp3');
   var awwman = new Audio('./assets/sounds/awwman.mp3');
@@ -36,7 +38,11 @@
       'What college did Ted, Marshall and Lily attend?',
       'What is the name of the movie directed by Tony Grafanello that portrayed Ted and Stella\'s relationship?',
       'What item did Ted take that belonged to the mother on St. Patrick\'s Day?',
-      'What question do I put here?'
+      'Where did Barney meet Ted for the first time?',
+      'What is the name of Barney\'s play?',
+      'What tattoo did Ted need to have removed?',
+      'What is Marshall\'s dream job?',
+      'What state did Ted and Barney pretend to be from when trying to pick up girls?'
     ];
     
   // Possible answers array
@@ -50,7 +56,11 @@
       ['Columbia', 'New York University', 'Syracuse', 'Wesleyan'],
       ['Forgtting Sarah Marshall', 'The Wedding Bride', 'I Love you Man', 'American Pie'],
       ['Yellow Umbrella', 'Blue French Horn', 'Pink Saxophone', 'Red Cowboy Boots'],
-      ['1', '2', '3', '4']
+      ['St. Patrick\'s Day Festival', 'Canada', 'The Arcadian', 'At a urinal'],
+      ['Happy Lily Day', 'Suck it Lily', 'The Pineapple Incident', 'Exploding Meatball Sub'],
+      ['Butterfly', 'Dolphin', 'Pineapple', 'Cupcake'],
+      ['Breakdancer', 'Basketball player', 'Architech', 'Environmental Lawyer'],
+      ['', '', '', '']
     ];
     
     // Correct answers array
@@ -65,5 +75,9 @@
             'Wesleyan',
             'The Wedding Bride',
             'Yellow Umbrella',
-            '1'
+            'At a urinal',
+            'Suck it Lily',
+            'Butterfly',
+            'Environmenal Lawyer',
+            ''
             ];

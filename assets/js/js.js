@@ -1,14 +1,43 @@
 $(document).ready(function () { // document.ready start
 
+  $("#mall").on("click", function(){
+    mall.play();
+  });
+
+  $("pause").on("click", function(){
+    mall.pause();
+  });
+
   function hideStartScreen(){
     $('.outerStartContainer').hide();
   }
-  
+
   function startQuiz(){
         $('.roundCounter span').html(`${roundNumber + 1}`);
         $('.scoreCounter span').html(`${scoreCount}`);
         hideStartScreen();
         generateQuestions();
+    }
+
+    $("button").click(function() {
+      var time = 6;
+      var timer = setInterval(function() {
+        time--;
+        $('#timer').html(time);
+        console.log(time);
+        if (time === 0) {
+          timeup();
+          timesup.play();
+          // clearInterval(timer);
+        }
+      }, 1000);
+    });
+
+    function timeup() {
+      $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
+      <p>Time's up!!</p>
+      <img src="https://i.pinimg.com/originals/cd/7a/c1/cd7ac1dc76a4ee83ea4a186e3a16e1e1.gif">`);
+      setInterval(nextQuestion, 5000);
     }
 
   //Click to start game
@@ -20,6 +49,7 @@ $(document).ready(function () { // document.ready start
 
 // Generate random questions and answers after user clicks start
   function generateQuestions (){
+    clearInterval(nextQuestion)
     if(roundNumber < questions.length){
        $('.quizGameplay').html(`<form id="quizGameArea">
 
@@ -113,7 +143,6 @@ $(document).ready(function () { // document.ready start
 
 // Move to next question in array regardless of answer being correct or incorrect
   function nextQuestion(){
-    $('.nextButton').on('click', function(){
       if ((roundNumber + 1) < questions.length){
         updateQuestion();
         generateQuestions();
@@ -121,7 +150,6 @@ $(document).ready(function () { // document.ready start
       } else {
         results();
       }
-    });
   }
 
   function results(){
