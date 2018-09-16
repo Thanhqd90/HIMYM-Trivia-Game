@@ -1,5 +1,64 @@
 $(document).ready(function () { // document.ready start
 
+  var intervalRoundTimer = undefined;
+  var intervalTimeup = undefined;
+  var timeoutNextQuestion = undefined;
+
+  function stopRoundTimer () {
+    if (intervalRoundTimer != undefined) {
+      clearInterval(intervalRoundTimer);
+      intervalRoundTimer = undefined;
+    }
+  }
+
+  function startRoundTimer() {
+    if (intervalRoundTimer != undefined) {
+      throw new Error("A round timer start interval already exists, did you clear it yet?");
+    }
+    time = 6;
+    intervalRoundTimer = setInterval(function () {
+      time--;
+      $('#timer').html(time + " seconds");
+      if (time === 0) {
+        timeup();
+        timesup.play();
+        stopRoundTimer();
+      }
+    }, 1000);
+  }
+
+  function stopTimeup() {
+    if (intervalTimeup != undefined) {
+      clearInterval(intervalTimeup);
+      intervalTimeup = undefined;
+    }
+  }
+
+  function timeup() {
+    if (intervalTimeup != undefined) {
+      throw new Error("A time up interval already exists, did you clear it yet?");
+    }
+    time = 3;
+      $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
+      <p>Time's up!!</p>
+      <img src="./assets/images/bored.gif">`);
+
+    intervalTimeup = setInterval(function () {
+      time--;
+      if (time === 0) {
+        nextQuestion();
+        stopTimeup();
+      }
+    }, 1000);
+  }
+
+  function stopNextQuestion () {
+    if (timeoutNextQuestion != undefined) {
+      clearInterval(timeoutNextQuestion);
+      timeoutNextQuestion = undefined;
+    }
+  }
+
   $("#mall").on("click", function () {
     mall.play();
   });
@@ -8,35 +67,7 @@ $(document).ready(function () { // document.ready start
     mall.pause();
   });
   
-  function roundTimerStart() {
-    time = 6;
-    var roundTimer = setInterval(function () {
-      time--;
-      $('#timer').html(time + " seconds");
-      if (time === 0) {
-        timeup();
-        timesup.play();
-        clearInterval(roundTimer);
-      }
-    }, 1000);
-  }
 
-  function timeup() {
-    var time = 3;
-    
-    $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
-      <p>Time's up!!</p>
-      <img src="./assets/images/bored.gif">`);
-
-    return setInterval(function () {
-      time--;
-
-      if (time === 0) {
-          nextQuestion();
-          feedbackTimer = 0;
-      }
-    }, 1000);
-  }
 
   function hideStartScreen() {
     $('.outerStartContainer').hide();
@@ -58,7 +89,7 @@ $(document).ready(function () { // document.ready start
 
   // Generate questions and answers after user clicks start
   function generateQuestions() {
-    roundTimerStart();
+    startRoundTimer();
     if (roundNumber < questions.length) {
       $('.quizGameplay').html(`<form id="quizGameArea">
         <fieldset>
@@ -90,22 +121,14 @@ $(document).ready(function () { // document.ready start
     function feedback() {
       var choiceVal = $('input[name=choice]:checked').val();
       playerGuess.push(choiceVal);
+      stopRoundTimer();
+      stopTimeup();
+      stopNextQuestion();
 
-      var random1 = Math.floor(Math.random() * 5) + 1;
-      var random2 = Math.floor(Math.random() * 5) + 1;
-
-      randomCelebrate = random1.toString();
-      randomSad = random2.toString();
-
-      console.log(random1);
-      console.log(random2);
-      console.log(randomCelebrate);
-      console.log(randomSad);
-
-      console.log(jQuery.type(random1));
-      console.log(jQuery.type(random2));
-      console.log(jQuery.type(randomCelebrate));
-      console.log(jQuery.type(randomSad));
+      var randomNumber = Math.floor(Math.random() * 5) + 1;
+    
+      randomCelebrate = randomNumber;
+      randomSad = (randomNumber + 5);
 
       if (choiceVal === correctAnswers[roundNumber]) {
         $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
@@ -122,8 +145,6 @@ $(document).ready(function () { // document.ready start
     $('#quizGameArea').submit(function (e) {
       e.preventDefault();
       var choiceVal = $('input[name=choice]:checked').val();
-      clearTimeout(roundTimerStart);
-      clearTimeout(timeup);
 
       if (choiceVal === correctAnswers[roundNumber]) {
         updateScore();
@@ -160,14 +181,18 @@ $(document).ready(function () { // document.ready start
 
   // Move to next question in array regardless of answer being correct or incorrect
   function nextQuestion() {
-    return setTimeout(function () {
+    if (timeoutNextQuestion != undefined) {
+      throw new Error("A next question timer already exists, did you clear it yet?");
+    }
+    timeoutNextQuestion = setTimeout(function () {
       if ((roundNumber + 1) < questions.length) {
         updateQuestion();
         generateQuestions();
         roundCounter();
-        time = 10;
+        stopNextQuestion();
       } else {
         results();
+        stopNextQuestion();
       }
     }, 3000);
   }

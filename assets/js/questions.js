@@ -2,12 +2,6 @@
   var roundNumber = 0;
   var playerGuess = [];
   var scoreCount = 0;
-
-  var random1 = Math.floor(Math.random() * 5) + 1;
-  var random2 = Math.floor(Math.random() * 5) + 1;
-
-  randomCelebrate = random1.toString();
-  randomSad = random2.toString();
   
   // Sounds
   

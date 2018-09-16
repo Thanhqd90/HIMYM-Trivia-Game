@@ -43,8 +43,6 @@ $(document).ready(function () { // document.ready start
       if (time === 0) {
         timeup();
         timesup.play();
-        clearInterval(intervalRoundTimer);
-        intervalRoundTimer = undefined;
         stopRoundTimer();
       }
     }, 1000);
@@ -70,14 +68,12 @@ $(document).ready(function () { // document.ready start
       time--;
       if (time === 0) {
         nextQuestion();
-        clearInterval(intervalTimeup);
-        intervalTimeup = undefined;
         stopTimeup();
       }
     }, 1000);
   }
 
-  function timeoutNextQuestion () {
+  function stopNextQuestion () {
     if (timeoutNextQuestion != undefined) {
       clearInterval(timeoutNextQuestion);
       timeoutNextQuestion = undefined;
@@ -137,19 +133,14 @@ $(document).ready(function () { // document.ready start
       var choiceVal = $('input[name=choice]:checked').val();
       playerGuess.push(choiceVal);
       stopRoundTimer();
+      stopTimeup();
+      stopNextQuestion();
 
-      randomCelebrate = random1.toString();
-      randomSad = random2.toString();
-
-      console.log(random1);
-      console.log(random2);
-      console.log(randomCelebrate);
-      console.log(randomSad);
-
-      console.log(jQuery.type(random1));
-      console.log(jQuery.type(random2));
-      console.log(jQuery.type(randomCelebrate));
-      console.log(jQuery.type(randomSad));
+      var randomNumber = Math.floor(Math.random() * 5) + 1;
+    
+      randomCelebrate = randomNumber;
+      randomSad = (randomNumber + 5);
+     
 
       if (choiceVal === chosen3[roundNumber]) {
         $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
@@ -158,7 +149,7 @@ $(document).ready(function () { // document.ready start
       } else {
         $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
             <p>You selected <strong>${choiceVal}</strong> and that is not correct.</strong></p>
-            <img src="./assets/images/${randomSad + 5}.gif>`);
+            <img src="./assets/images/${randomSad}.gif>`);
       }
     }
 
@@ -213,12 +204,12 @@ $(document).ready(function () { // document.ready start
         updateQuestion();
         generateQuestions();
         roundCounter();
-        clearInterval(timeoutNextQuestion);
-        timeoutNextQuestion = undefined;
+        stopNextQuestion();
+
       } else {
         results();
-        clearInterval(timeoutNextQuestion);
-        timeoutNextQuestion = undefined;
+        stopNextQuestion();
+
       }
     }, 3000);
   }
