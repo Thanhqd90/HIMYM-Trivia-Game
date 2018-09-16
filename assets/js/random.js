@@ -145,11 +145,11 @@ $(document).ready(function () { // document.ready start
       if (choiceVal === chosen3[roundNumber]) {
         $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
             <p>You selected <strong>${choiceVal}</strong> and that is correct!!</p>
-            <img src="./assets/images/${randomCelebrate}.gif>`);
+            <img src="./assets/images/${randomCelebrate}.gif">`);
       } else {
         $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
             <p>You selected <strong>${choiceVal}</strong> and that is not correct.</strong></p>
-            <img src="./assets/images/${randomSad}.gif>`);
+            <img src="./assets/images/${randomSad}.gif">`);
       }
     }
 
@@ -223,7 +223,7 @@ $(document).ready(function () { // document.ready start
     }
 
     if (scoreCount < 6) {
-      const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
       forfeit.play();
       $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! I'm not mad, just disappointed</p>`);
       $('#quizGameArea').append('<br><img src="https://78.media.tumblr.com/f59a31fbe5137bc1372240186c76d846/tumblr_nr2vni88ue1u55i54o1_400.gif">');
@@ -233,7 +233,7 @@ $(document).ready(function () { // document.ready start
       restartQuiz();
     } else if (scoreCount >= 6 && scoreCount < 9) {
       legendary.play();
-      const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
       $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! It\'s going to be -waitforit- Legendary</p>`);
       $('#quizGameArea').append('<br><img src="http://78.media.tumblr.com/tumblr_lxxfexRoNp1qageydo1_500.gif">');
       $('#quizGameArea').append(restartURL);
@@ -241,7 +241,7 @@ $(document).ready(function () { // document.ready start
 
       restartQuiz();
     } else {
-      const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
       highsix.play();
       $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! A high 5 isn't going to cut it</p>`);
       $('#quizGameArea').append('<br><img src="https://media1.tenor.com/images/33ec8a1a310411d87c49c8cf7a8b16eb/tenor.gif"><br>');

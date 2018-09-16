@@ -133,11 +133,11 @@ $(document).ready(function () { // document.ready start
       if (choiceVal === correctAnswers[roundNumber]) {
         $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
             <p>You chose <strong>${choiceVal}</strong> and that is correct!!</p>
-            <img src="./assets/images/${randomCelebrate},.gif>`);
+            <img src="./assets/images/${randomCelebrate}.gif">`);
       } else {
         $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
             <p>You chose <strong>${choiceVal}</strong> and that is not the correct answer.</strong></p>
-            <img src="./assets/images/${randomSad + 5}.gif>`);
+            <img src="./assets/images/${randomSad}.gif">`);
       }
     }
 
@@ -207,7 +207,7 @@ $(document).ready(function () { // document.ready start
     }
 
     if (scoreCount < 6) {
-      const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
       forfeit.play();
 
       $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!!<br> I'm not mad, just disappointed</p>`);
@@ -217,7 +217,7 @@ $(document).ready(function () { // document.ready start
       restartQuiz();
 
     } if (scoreCount >= 6 && scoreCount < 9) {
-      const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
       legendary.play();
       $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! It\'s going to be -waitforit- Legendary</p>`);
       $('#quizGameArea').append('<br><img src="./assets/images/shelf.png">');
@@ -226,7 +226,7 @@ $(document).ready(function () { // document.ready start
       restartQuiz();
 
     } if (scoreCount >= 9 && scoreCount < 12) {
-      const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
       legendary.play();
       $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! Text Here`);
       $('#quizGameArea').append('<br><img src="./assets/images/selffive.png">');
@@ -237,7 +237,7 @@ $(document).ready(function () { // document.ready start
     }
 
       if (scoreCount >= 12 && scoreCount < 14) {
-      const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
       legendary.play();
       $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! Very good score`);
       $('#quizGameArea').append('<br><img src="./assets/images/redTape.png">');
@@ -248,7 +248,7 @@ $(document).ready(function () { // document.ready start
     }
     
     if (scoreCount === questions.length) {
-      const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
       highsix.play();
       $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! A high 5 isn't going to cut it</p>`);
       $('#quizGameArea').append('<br><img src="https://media1.tenor.com/images/33ec8a1a310411d87c49c8cf7a8b16eb/tenor.gif"><br>');
