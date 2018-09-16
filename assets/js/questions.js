@@ -47,8 +47,7 @@
       'What is the name of Barney\'s play?',
       'What tattoo did Ted need to have removed?',
       'What is Marshall\'s dream job?',
-      'What state did Ted and Barney pretend to be from when trying to pick up girls?',
-      'What is Barney\'s catch phrase?'
+      'What state did Ted and Barney pretend to be from when trying to pick up girls?'
     ];
     
   // Possible answers array
@@ -67,7 +66,6 @@
       ['Butterfly', 'Dolphin', 'Pineapple', 'Cupcake'],
       ['Breakdancer', 'Basketball player', 'Architech', 'Environmental Lawyer'],
       ['Missouri', 'New Jersey', 'Michigan', 'Vermont']
-      ['I only have one rule', 'We were on a break', 'Suit up', 'Come again for Big Fudge?']
     ];
     
     // Correct answers array
@@ -87,5 +85,4 @@
             'Butterfly',
             'Environmenal Lawyer',
             'Missouri',
-            'Suit up'
             ];

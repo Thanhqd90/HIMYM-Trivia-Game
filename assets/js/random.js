@@ -84,7 +84,6 @@ $(document).ready(function () { // document.ready start
     }
   }
 
-
   function hideStartScreen() {
     $('.outerStartContainer').hide();
   }
@@ -100,7 +99,6 @@ $(document).ready(function () { // document.ready start
   $('.start10').on('click', function () {
     startQuiz();
     suitup.play();
-
   });
 
 
@@ -207,7 +205,7 @@ $(document).ready(function () { // document.ready start
     if (timeoutNextQuestion != undefined) {
       throw new Error("A next question timer already exists, did you clear it yet?");
     }
-    
+
     timeoutNextQuestion = setTimeout(function () {
 
       if ((roundNumber + 1) < chosen.length) {
