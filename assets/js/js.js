@@ -1,5 +1,13 @@
 $(document).ready(function () { // document.ready start
 
+  $("#mall").on("click", function() {
+    mall.play();
+    });
+
+    $("#pause").on("click", function() {
+      mall.pause();
+      });
+
   function hideStartScreen(){
     $('.outerStartContainer').hide();
   }

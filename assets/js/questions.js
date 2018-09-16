@@ -26,6 +26,7 @@
     function roundCounter(){
       $('.roundCounter span').html(roundNumber + 1);
     }
+
     
   // Questions array
   
