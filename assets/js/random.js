@@ -25,6 +25,13 @@ $(document).ready(function () { // document.ready start
     }
   }
 
+  function stopRoundTimer () {
+    if (intervalRoundTimer != undefined) {
+      clearInterval(intervalRoundTimer);
+      intervalRoundTimer = undefined;
+    }
+  }
+
   function startRoundTimer() {
     if (intervalRoundTimer != undefined) {
       throw new Error("A round timer start interval already exists, did you clear it yet?");
@@ -43,10 +50,10 @@ $(document).ready(function () { // document.ready start
     }, 1000);
   }
 
-  function stopRoundTimer () {
-    if (intervalRoundTimer != undefined) {
-      clearInterval(intervalRoundTimer);
-      intervalRoundTimer = undefined;
+  function stopTimeup() {
+    if (intervalTimeup != undefined) {
+      clearInterval(intervalTimeup);
+      intervalTimeup = undefined;
     }
   }
 
@@ -68,13 +75,6 @@ $(document).ready(function () { // document.ready start
         stopTimeup();
       }
     }, 1000);
-  }
-
-  function stopTimeup() {
-    if (intervalTimeup != undefined) {
-      clearInterval(intervalTimeup);
-      intervalTimeup = undefined;
-    }
   }
 
   function timeoutNextQuestion () {
@@ -136,6 +136,7 @@ $(document).ready(function () { // document.ready start
     function feedback() {
       var choiceVal = $('input[name=choice]:checked').val();
       playerGuess.push(choiceVal);
+      stopRoundTimer();
 
       randomCelebrate = random1.toString();
       randomSad = random2.toString();
