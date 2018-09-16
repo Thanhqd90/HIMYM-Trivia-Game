@@ -4,6 +4,9 @@ $(document).ready(function () { // document.ready start
   var chosen = [];
   var chosen2 = [];
   var chosen3 = [];
+  var intervalRoundTimer = undefined;
+  var intervalTimeup = undefined;
+  var timeoutNextQuestion = undefined;
 
   for (var i = 0; i <= 9; i++) {
     var number = Math.floor(Math.random() * len);
@@ -22,32 +25,63 @@ $(document).ready(function () { // document.ready start
     }
   }
 
-  function roundTimerStart() {
+  function startRoundTimer() {
+    if (intervalRoundTimer != undefined) {
+      throw new Error("A round timer start interval already exists, did you clear it yet?");
+    }
     time = 6;
-    var roundTimer = setInterval(function () {
+    intervalRoundTimer = setInterval(function () {
       time--;
       $('#timer').html(time + " seconds");
       if (time === 0) {
         timeup();
         timesup.play();
-        setTimeout(roundTimer);
-        clearInterval(roundTimer);
+        clearInterval(intervalRoundTimer);
+        intervalRoundTimer = undefined;
+        stopRoundTimer();
       }
     }, 1000);
   }
 
+  function stopRoundTimer () {
+    if (intervalRoundTimer != undefined) {
+      clearInterval(intervalRoundTimer);
+      intervalRoundTimer = undefined;
+    }
+  }
+
   function timeup() {
-    var time = 3;
-    setInterval(function () {
+    if (intervalTimeup != undefined) {
+      throw new Error("A time up interval already exists, did you clear it yet?");
+    }
+    time = 3;
+      $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
+      <p>Time's up!!</p>
+      <img src="./assets/images/bored.gif">`);
+
+    intervalTimeup = setInterval(function () {
       time--;
       if (time === 0) {
         nextQuestion();
-        feedbackTimer = 0;
+        clearInterval(intervalTimeup);
+        intervalTimeup = undefined;
+        stopTimeup();
       }
     }, 1000);
-    $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
-        <p>Time's up!!</p>
-        <img src="./assets/images/bored.gif">`);
+  }
+
+  function stopTimeup() {
+    if (intervalTimeup != undefined) {
+      clearInterval(intervalTimeup);
+      intervalTimeup = undefined;
+    }
+  }
+
+  function timeoutNextQuestion () {
+    if (timeoutNextQuestion != undefined) {
+      clearInterval(timeoutNextQuestion);
+      timeoutNextQuestion = undefined;
+    }
   }
 
 
@@ -72,8 +106,7 @@ $(document).ready(function () { // document.ready start
 
   // Generate random questions and answers after user clicks start
   function generateQuestions() {
-    clearInterval(roundTimerStart);
-    roundTimerStart();
+    startRoundTimer();
     if (roundNumber < chosen.length) {
       $('.quizGameplay').html(`<form id="quizGameArea">
         <fieldset>
@@ -105,9 +138,6 @@ $(document).ready(function () { // document.ready start
     function feedback() {
       var choiceVal = $('input[name=choice]:checked').val();
       playerGuess.push(choiceVal);
-      clearInterval(roundTimerStart);
-      clearInterval(timeup);
-      setTimeout(nextQuestion);
 
       randomCelebrate = random1.toString();
       randomSad = random2.toString();
@@ -174,13 +204,22 @@ $(document).ready(function () { // document.ready start
 
   // Move to next question in array regardless of answer being correct or incorrect
   function nextQuestion() {
-    setTimeout(function () {
+    if (timeoutNextQuestion != undefined) {
+      throw new Error("A next question timer already exists, did you clear it yet?");
+    }
+    
+    timeoutNextQuestion = setTimeout(function () {
+
       if ((roundNumber + 1) < chosen.length) {
         updateQuestion();
         generateQuestions();
         roundCounter();
+        clearInterval(timeoutNextQuestion);
+        timeoutNextQuestion = undefined;
       } else {
         results();
+        clearInterval(timeoutNextQuestion);
+        timeoutNextQuestion = undefined;
       }
     }, 3000);
   }

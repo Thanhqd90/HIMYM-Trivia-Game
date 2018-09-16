@@ -16,7 +16,6 @@ $(document).ready(function () { // document.ready start
       if (time === 0) {
         timeup();
         timesup.play();
-        setTimeout(roundTimer);
         clearInterval(roundTimer);
       }
     }, 1000);
@@ -24,16 +23,19 @@ $(document).ready(function () { // document.ready start
 
   function timeup() {
     var time = 3;
-    setInterval(function () {
-      time--;
-      if (time === 0) {
-        nextQuestion();
-        feedbackTimer = 0;
-      }
-    }, 1000);
+    
     $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
       <p>Time's up!!</p>
       <img src="./assets/images/bored.gif">`);
+
+    return setInterval(function () {
+      time--;
+
+      if (time === 0) {
+          nextQuestion();
+          feedbackTimer = 0;
+      }
+    }, 1000);
   }
 
   function hideStartScreen() {
@@ -88,9 +90,6 @@ $(document).ready(function () { // document.ready start
     function feedback() {
       var choiceVal = $('input[name=choice]:checked').val();
       playerGuess.push(choiceVal);
-      clearInterval(roundTimerStart);
-      clearInterval(timeup);
-      setTimeout(nextQuestion);
 
       var random1 = Math.floor(Math.random() * 5) + 1;
       var random2 = Math.floor(Math.random() * 5) + 1;
@@ -161,7 +160,7 @@ $(document).ready(function () { // document.ready start
 
   // Move to next question in array regardless of answer being correct or incorrect
   function nextQuestion() {
-    setTimeout(function () {
+    return setTimeout(function () {
       if ((roundNumber + 1) < questions.length) {
         updateQuestion();
         generateQuestions();
