@@ -3,6 +3,11 @@
   var playerGuess = [];
   var scoreCount = 0;
 
+  var random1 = Math.floor(Math.random() * 5) + 1;
+  var random2 = Math.floor(Math.random() * 5) + 1;
+
+  randomCelebrate = random1.toString();
+  randomSad = random2.toString();
   
   // Sounds
   
@@ -25,6 +30,7 @@
     }
 
     
+    
   // Questions array
   
     var questions = [
@@ -41,7 +47,8 @@
       'What is the name of Barney\'s play?',
       'What tattoo did Ted need to have removed?',
       'What is Marshall\'s dream job?',
-      'What state did Ted and Barney pretend to be from when trying to pick up girls?'
+      'What state did Ted and Barney pretend to be from when trying to pick up girls?',
+      'What is Barney\'s catch phrase?'
     ];
     
   // Possible answers array
@@ -59,7 +66,8 @@
       ['Happy Lily Day', 'Suck it Lily', 'The Pineapple Incident', 'Exploding Meatball Sub'],
       ['Butterfly', 'Dolphin', 'Pineapple', 'Cupcake'],
       ['Breakdancer', 'Basketball player', 'Architech', 'Environmental Lawyer'],
-      ['', '', '', '']
+      ['Missouri', 'New Jersey', 'Michigan', 'Vermont']
+      ['I only have one rule', 'We were on a break', 'Suit up', 'Come again for Big Fudge?']
     ];
     
     // Correct answers array
@@ -78,5 +86,6 @@
             'Suck it Lily',
             'Butterfly',
             'Environmenal Lawyer',
-            ''
+            'Missouri',
+            'Suit up'
             ];

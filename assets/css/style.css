@@ -2,7 +2,7 @@ body {
     color: white;
     background-color: black;
     font-family: 'Quattrocento', serif;
-    background: url('https://www.desktopbackground.org/p/2013/06/05/587418_how-i-met-your-mother-wallpaper-1_2560x1440_h.jpg')  no-repeat center center fixed;
+    background: url('../images/himym-bg.png')  no-repeat center center fixed;
     background-size: cover;
     height: 100%;
     overflow: auto;
@@ -80,14 +80,14 @@ label {
     display: block;
     background-color: black;
     margin: 3px 0px;
-    cursor: url('../images/cursor.jpg'), auto;
+    cursor: pointer;
     font-size: 24px;
 }
   
 label:hover {
     background-color: #990808;
     transition: 500ms;
-    cursor: url('../images/cursor.jpg'), auto;
+    
 }
 
 
