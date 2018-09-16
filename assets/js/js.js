@@ -1,9 +1,22 @@
 $(document).ready(function () { // document.ready start
 
+  //Music control
+  $("#mall").on("click", function () {
+    mall.play();
+  });
+    
+  $("#pause").on("click", function () {
+    mall.pause();
+  });
+
+  // Timer variables
+
   var intervalRoundTimer = undefined;
   var intervalTimeup = undefined;
   var timeoutNextQuestion = undefined;
 
+
+  // Round timer stop and start
   function stopRoundTimer () {
     if (intervalRoundTimer != undefined) {
       clearInterval(intervalRoundTimer);
@@ -15,18 +28,20 @@ $(document).ready(function () { // document.ready start
     if (intervalRoundTimer != undefined) {
       throw new Error("A round timer start interval already exists, did you clear it yet?");
     }
-    time = 6;
+    time = 11;
     intervalRoundTimer = setInterval(function () {
       time--;
       $('#timer').html(time + " seconds");
       if (time === 0) {
         timeup();
         timesup.play();
+        playerGuess.push("");
         stopRoundTimer();
       }
     }, 1000);
   }
 
+  // End question when timer hits zero and submit as unanswered
   function stopTimeup() {
     if (intervalTimeup != undefined) {
       clearInterval(intervalTimeup);
@@ -52,6 +67,7 @@ $(document).ready(function () { // document.ready start
     }, 1000);
   }
 
+  // Feedback timer stop
   function stopNextQuestion () {
     if (timeoutNextQuestion != undefined) {
       clearInterval(timeoutNextQuestion);
@@ -59,15 +75,11 @@ $(document).ready(function () { // document.ready start
     }
   }
 
-  $("#mall").on("click", function () {
-    mall.play();
+  //Click to start game
+  $('.start20').on('click', function () {
+    startQuiz();
+    diamondsuit.play();
   });
-
-  $("#pause").on("click", function () {
-    mall.pause();
-  });
-  
-
 
   function hideStartScreen() {
     $('.outerStartContainer').hide();
@@ -79,13 +91,6 @@ $(document).ready(function () { // document.ready start
     hideStartScreen();
     generateQuestions();
   }
-
-
-  //Click to start game
-  $('.start20').on('click', function () {
-    startQuiz();
-    diamondsuit.play();
-  });
 
   // Generate questions and answers after user clicks start
   function generateQuestions() {
@@ -197,6 +202,7 @@ $(document).ready(function () { // document.ready start
     }, 3000);
   }
 
+  //End game based on number correct + Create modal with answers
   function results() {
 
     for (var i = 0; i < questions.length; i++) {
@@ -205,59 +211,62 @@ $(document).ready(function () { // document.ready start
         <p class="results">You selected <strong>${possibleAnswers[i]}</p></strong>
         <p class="results">The correct answer was <strong>${correctAnswers[i]}</strong></p></div>`);
     }
-
     if (scoreCount < 6) {
-      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+      const restartURL = '<br><br><button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
       forfeit.play();
-
-      $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!!<br> I'm not mad, just disappointed</p>`);
-      $('#quizGameArea').append('<br><img src="./assets/images/bear.gif">');
+      $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!!<br> I'm not angry, just disappointed</p>`);
+      $('#quizGameArea').append('<br><img src="./assets/images/dis.gif">');
       $('#quizGameArea').append(restartURL);
-      $('#quizGameArea').append(`<button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>`);
+      $('#quizGameArea').append(`<br><br><button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>`);
       restartQuiz();
-
-    } if (scoreCount >= 6 && scoreCount < 9) {
-      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
-      legendary.play();
-      $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! It\'s going to be -waitforit- Legendary</p>`);
-      $('#quizGameArea').append('<br><img src="./assets/images/shelf.png">');
-      $('#quizGameArea').append(restartURL);
-      $('#quizGameArea').append('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
-      restartQuiz();
-
-    } if (scoreCount >= 9 && scoreCount < 12) {
-      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
-      legendary.play();
-      $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! Text Here`);
-      $('#quizGameArea').append('<br><img src="./assets/images/selffive.png">');
-      $('#quizGameArea').append(restartURL);
-      $('#quizGameArea').append('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
-      restartQuiz();
-
+    } 
+    if (scoreCount >= 6 && scoreCount < 9) {
+        const restartURL = '<br><br><button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+        marshall.play();
+        $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! Damnit Marshall!!</p>`);
+        $('#quizGameArea').append('<br><img src="./assets/images/bear.gif">');
+        $('#quizGameArea').append(restartURL);
+        $('#quizGameArea').append('<br><br><button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
+        restartQuiz();
     }
-
-      if (scoreCount >= 12 && scoreCount < 14) {
-      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
-      legendary.play();
-      $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! Very good score`);
-      $('#quizGameArea').append('<br><img src="./assets/images/redTape.png">');
-      $('#quizGameArea').append(restartURL);
-      $('#quizGameArea').append('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
-      restartQuiz();
-
+    if (scoreCount >= 9 && scoreCount < 12) {
+        const restartURL = '<br><br><button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+        teach.play();
+        $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!!You changed the course of Blitzory`);
+        $('#quizGameArea').append('<br><img src="./assets/images/friendship.gif">');
+        $('#quizGameArea').append(restartURL);
+        $('#quizGameArea').append('<br><br><button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
+        restartQuiz();
     }
-    
-    if (scoreCount === questions.length) {
-      const restartURL = '<button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+    if (scoreCount >= 12 && scoreCount < 15) {
+        const restartURL = '<br><br><button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+        blitzory.play();
+        $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!!  I'm going to teach you how to live`);
+        $('#quizGameArea').append('<br><img src="./assets/images/self.gif">');
+        $('#quizGameArea').append(restartURL);
+        $('#quizGameArea').append('<br><br><button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
+        restartQuiz();
+    }
+    if (scoreCount >= 15 && scoreCount < 18) {
+        const restartURL = '<br><br><button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
+        legendary.play();
+        $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! Its going to be Legendary`);
+        $('#quizGameArea').append('<br><img src="./assets/images/redTape.gif">');
+        $('#quizGameArea').append(restartURL);
+        $('#quizGameArea').append('<br><br><button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
+        restartQuiz();
+    } else {
+      const restartURL = '<br><br><button type="button" class="restart btn btn-warning">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
       highsix.play();
       $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber + 1}!! A high 5 isn't going to cut it</p>`);
-      $('#quizGameArea').append('<br><img src="https://media1.tenor.com/images/33ec8a1a310411d87c49c8cf7a8b16eb/tenor.gif"><br>');
+      $('#quizGameArea').append('<br><img src="./assets/images/highsix.gif"><br>');
       $('#quizGameArea').append(restartURL);
-      $('#quizGameArea').append('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
+      $('#quizGameArea').append('<br><br><button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
       restartQuiz();
     }
   }
 
+// Reset game stats
   function restartQuiz() {
     $('.restart').on('click', function () {
       scoreCount = 0;
