@@ -5,7 +5,7 @@ $(document).ready(function () { // document.ready start
       var chosen2 = [];
       var chosen3 = [];
       
-      for (var i = 0; i<=4; i++) {
+      for (var i = 0; i<=9; i++) {
       var number = Math.floor(Math.random() * len);  
       chosen[i] = questions[number];
       chosen2[i] = possibleAnswers[number];
@@ -194,55 +194,38 @@ $(document).ready(function () { // document.ready start
     }
   
     function results(){
-      
+      for(var i = 0; i < chosen.length; i++){
+        $('.showAnswers').append(`
+        <div class="quizSummary"><h4 class="results">${i + 1}. ${chosen[i]}</h4> 
+        <p class="results">You selected <strong>${playerGuess[i]}</p></strong>
+        <p class="results">The correct answer was <strong>${chosen3[i]}</strong></p></div>`);
+    }
+
       if (scoreCount < 6){
         const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
         forfeit.play();
-        $('#quizGameArea').html('<p class="resultsFeedback">I\'m not mad, just disappointed</p>');
+        $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber}!! I'm not mad, just disappointed</p>`);
         $('#quizGameArea').append('<br><img src="https://78.media.tumblr.com/f59a31fbe5137bc1372240186c76d846/tumblr_nr2vni88ue1u55i54o1_400.gif">');
         $('#quizGameArea').append(restartURL);
         $('#quizGameArea').append('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
         
-        for(var i = 0; i < chosen.length; i++){
-          $('.showAnswers').append(`
-          <div class="quizSummary"><h4 class="results">${i + 1}. ${chosen[i]}</h4> 
-          <p class="results">You selected <strong>${playerGuess[i]}</p></strong>
-          <p class="results">The correct answer was <strong>${chosen3[i]}</strong></p></div>`);
-      }
-      
-   
         restartQuiz();
       } else if (scoreCount >= 6 && scoreCount < 9) {
         legendary.play();
         const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
-        $('#quizGameArea').html(`<p class="resultsFeedback">It\'s going to be -waitforit- Legendary</p>`);
+        $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber}!! It\'s going to be -waitforit- Legendary</p>`);
         $('#quizGameArea').append('<br><img src="http://78.media.tumblr.com/tumblr_lxxfexRoNp1qageydo1_500.gif">');
         $('#quizGameArea').append(restartURL);
         $('#quizGameArea').append('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
-  
-        for(var i = 0; i < chosen.length; i++){
-          $('.showAnswers').append(`
-          <div class="quizSummary"><h4 class="results">${i + 1}. ${chosen[i]}</h4> 
-          <p class="results">You selected <strong>${playerGuess[i]}</p></strong>
-          <p class="results">The correct answer was <strong>${chosen3[i]}</strong></p></div>`);
-      }
-      
   
         restartQuiz();
       } else {
         const restartURL = '<button type="button" class="restart btn btn-danger">Play again<br><img height="200px" width="200px"  src="./assets/images/accepted.png"></button>';
         highsix.play();
-        $('#quizGameArea').html('<p class="resultsFeedback">The highest of 5\'s!</p>');
+        $('#quizGameArea').html(`<p class="final-feedback">You scored ${scoreCount} out of ${roundNumber}!! A high 5 isn't going to cut it</p>`);
         $('#quizGameArea').append('<br><img src="https://media1.tenor.com/images/33ec8a1a310411d87c49c8cf7a8b16eb/tenor.gif"><br>');
         $('#quizGameArea').append(restartURL);
         $('#quizGameArea').append('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#answers">Display answers</button>');
-  
-        for(var i = 0; i < chosen.length; i++){
-          $('.showAnswers').append(`
-          <div class="quizSummary"><h4 class="results">${i + 1}. ${chosen[i]}</h4> 
-          <p class="results">You selected <strong>${playerGuess[i]}</p></strong>
-          <p class="results">The correct answer was <strong>${chosen3[i]}</strong></p></div>`);
-      }
   
   
         restartQuiz();

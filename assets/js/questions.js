@@ -1,8 +1,5 @@
   // Global variables
   var roundNumber = 0;
-  // var randomQuestions = [];
-  // var randomChoices = [];
-  // var randomAnswer =[];
   var playerGuess = [];
   var scoreCount = 0;
 
