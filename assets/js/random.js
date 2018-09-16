@@ -38,6 +38,35 @@ $(document).ready(function () { // document.ready start
       console.log(chosen3[2]);
       console.log(chosen3[3]);
       console.log(chosen3[4]);
+
+      function roundTimerStart(){
+        time = 6;
+        var roundTimer = setInterval(function() {
+          time--;
+          $('#timer').html(time + " seconds");
+          if (time === 0) {
+            timeup();
+            timesup.play();
+            setTimeout(roundTimer);
+            clearInterval(roundTimer);
+          }
+        }, 1000);
+      }
+  
+      function timeup() {
+        var time = 3;
+        setInterval(function() {
+          time--;
+          if (time === 0) {
+            nextQuestion();
+            feedbackTimer = 0;
+          }
+        }, 1000);
+  
+        $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
+        <p>Time's up!!</p>
+        <img src="https://i.pinimg.com/originals/cd/7a/c1/cd7ac1dc76a4ee83ea4a186e3a16e1e1.gif">`);
+      }
   
   
     function hideStartScreen(){
@@ -61,6 +90,8 @@ $(document).ready(function () { // document.ready start
   
     // Generate random questions and answers after user clicks start
     function generateQuestions (){
+      clearInterval(roundTimerStart);
+      roundTimerStart();
       if(roundNumber < chosen.length){
          $('.quizGameplay').html(`<form id="quizGameArea">
   
@@ -94,18 +125,17 @@ $(document).ready(function () { // document.ready start
           function feedback(){
             var choiceVal = $('input[name=choice]:checked').val();
             playerGuess.push(choiceVal);
+            clearInterval(roundTimerStart);
+            clearInterval(timeup);
+            setTimeout(nextQuestion);
             if (choiceVal === chosen3[roundNumber]){
             $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
             <p>You selected <strong>${choiceVal}</strong> and that is correct!!</p>
-            <img src="https://i.pinimg.com/originals/cd/7a/c1/cd7ac1dc76a4ee83ea4a186e3a16e1e1.gif">
-            <br>
-            <button class="nextButton">Next Question</button>`);
+            <img src="https://i.pinimg.com/originals/cd/7a/c1/cd7ac1dc76a4ee83ea4a186e3a16e1e1.gif">`);
           } else {
             $('.quizGameplay #quizGameArea').html(`<div class="question-feedback">
             <p>You selected <strong>${choiceVal}</strong> and that is not correct.</strong></p>
-            <img src="https://i.pinimg.com/originals/f3/f9/f9/f3f9f929b48a70e404c2faaa560b154c.gif">
-            <br>
-            <button class="nextButton">Next</button>`);
+            <img src="https://i.pinimg.com/originals/f3/f9/f9/f3f9f929b48a70e404c2faaa560b154c.gif">`);
           } 
     }
     
@@ -152,7 +182,7 @@ $(document).ready(function () { // document.ready start
   
   // Move to next question in array regardless of answer being correct or incorrect
     function nextQuestion(){
-      $('.nextButton').on('click', function(){
+      setTimeout(function(){
         if ((roundNumber + 1) < chosen.length){
           updateQuestion();
           generateQuestions();
@@ -160,7 +190,7 @@ $(document).ready(function () { // document.ready start
         } else {
           results();
         }
-      });
+      }, 3000);
     }
   
     function results(){

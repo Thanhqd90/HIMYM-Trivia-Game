@@ -5,6 +5,7 @@
   // var randomAnswer =[];
   var playerGuess = [];
   var scoreCount = 0;
+
   
   // Sounds
   
@@ -31,7 +32,7 @@
     var questions = [
       'What is the name of the bar the main characters hang out at?',
       'What was Robin\'s stage name in Canada?',
-      'What are Marshall and Lily\s nicknames for each other?',
+      'What are Marshall and Lily\'s nicknames for each other?',
       'What was Victora\'s fake name used at Claudia and Stuart\'s wedding?',
       'What is the name of the musical Marshall and Brad go see?',
       'What is the name of the company Barney works for?',
